@@ -1,86 +1,213 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso ao serviços MicroG H.T.P</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-            background-color: #282525;
-            margin: 0;
-        }
-        .message {
-            background-color: #e4e795;
-            color: #856404;
-            padding: 15px;
-            border: 1px solid #4c09ed;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            width: 80%;
-            text-align: center;
-        }
-        .app-container {
-            background-color: gray;
-            border: 1px solid #1d1717;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border-radius: 12px;
-        }
-        .app-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .download-button {
-            background-color: #05d647;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        .download-button:hover {
-            background-color: #357ae8;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MicroG H.T.P - Acesso aos Serviços</title>
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --accent: #00ff88;
+      --text-light: #f1f1f1;
+      --text-dark: #212529;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #bbb;
+    }
+
+    .alert {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .app-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .app-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 20%;
+      margin-bottom: 15px;
+    }
+
+    .app-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .download-button {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #000;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.3s ease;
+    }
+
+    .download-button:hover {
+      opacity: 0.85;
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Animação do título */
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.6), 0 0 20px rgba(0, 255, 136, 0.6);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(0, 212, 255, 1), 0 0 40px rgba(0, 255, 136, 1);
+      }
+    }
+
+    /* Tema claro automático */
+    @media (prefers-color-scheme: light) {
+      body {
+        background: #f4f4f4;
+        color: var(--text-dark);
+      }
+
+      header h1 {
+        -webkit-text-fill-color: initial;
+        background: none;
+        color: var(--primary);
+        text-shadow: none;
+      }
+
+      header p {
+        color: #555;
+      }
+
+      .alert {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+      }
+
+      .app-card {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .app-title {
+        color: var(--primary);
+      }
+
+      .download-button {
+        color: #fff;
+      }
+
+      footer {
+        background: #e9ecef;
+        color: #333;
+        border-top: 1px solid #ccc;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main>
+    <header>
+      <h1>𝙃𝙞𝙘‑𝙏𝙚𝙘𝙠𝙨 𝙋𝙡𝙪𝙨</h1>
+      <p>Acesso rápido e seguro aos serviços MicroG H.T.P</p>
+    </header>
 
-    <div class="message">
-        <h3 style="color:#e60d14";>Aviso!</h3><h4><p style="color:#0880e6";>Certifique-se de que seu dispositivo possui a marca da fabricante e as configurações corretas antes de baixar os aplicativos. Obrigado !</h4></p>
-      <h1><p style="color:#0de674";>𝙃𝙞𝙘-𝙏𝙚𝙘𝙠𝙨 𝙋𝙡𝙪𝙨</p></h1>
+    <div class="alert">
+      <strong>Aviso:</strong> Certifique-se de que seu dispositivo possui a marca da fabricante e as configurações corretas antes de baixar os aplicativos.
     </div>
-  <div class="app-container">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIKWTVj-NRt87tbxr39RleDMCMNzpluM6_FoYoFu-zGQ&s" alt="[Huawei, Xiaomi]" class="app-icon">
-        <div class="app-title"><h2>[Huawei, Xiaomi]</h2></div>
-        <a href="https://is.gd/a4tcTr" class="download-button">Baixar</a>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIKWTVj-NRt87tbxr39RleDMCMNzpluM6_FoYoFu-zGQ&s" alt="Huawei, Xiaomi" class="app-icon" />
+        <div class="app-title">Huawei & Xiaomi</div>
+        <a href="https://migly.in/8btQ" class="download-button">Baixar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIKWTVj-NRt87tbxr39RleDMCMNzpluM6_FoYoFu-zGQ&s" alt="Samsung, Motorola e Outros" class="app-icon" />
+        <div class="app-title">Samsung, Motorola e Outros</div>
+        <a href="https://migly.in/FLtq" class="download-button">Baixar</a>
+      </div>
     </div>
-   <div class="app-container">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIKWTVj-NRt87tbxr39RleDMCMNzpluM6_FoYoFu-zGQ&s" alt="microg_outros" class="app-icon">
-        <div class="app-title"><h2>[Samsung,Motorola,e Outros]</h2></div>
-        <a href="https://is.gd/61Kq2L" class="download-button">Baixar</a>
-        </div>
+  </main>
+
+  <footer>
+    © 2025 Hic‑Tecks Plus. Todos os direitos reservados.
+  </footer>
 </body>
 </html>
