@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6FBF8">
+<title>Baixar MicroG RE | H.T.Plus</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" rel="stylesheet">
+
+<style>
+/* ============ Tokens (tema claro = padrão) ============ */
+:root{
+  --bg:#F6FBF8;
+  --on-bg:#161D1A;
+  --surface-container:#E6EEEA;
+  --surface-high:#DCE5E1;
+  --on-surface-variant:#3F4945;
+  --outline:#6F7975;
+  --outline-variant:#BFC9C4;
+
+  --primary:#00695C;
+  --on-primary:#FFFFFF;
+  --primary-container:#9EF2DF;
+  --on-primary-container:#00201A;
+
+  --secondary-container:#FFDF8E;
+  --on-secondary-container:#241A00;
+
+  --tertiary-container:#FFD9D2;
+  --on-tertiary-container:#3F0A02;
+
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --smooth:cubic-bezier(.2,0,0,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1512;
+    --on-bg:#DDE5E0;
+    --surface-container:#1A2320;
+    --surface-high:#242E2A;
+    --on-surface-variant:#BFC9C4;
+    --outline:#899390;
+    --outline-variant:#3F4945;
+    --primary:#82D6C3;
+    --on-primary:#00382F;
+    --primary-container:#005046;
+    --on-primary-container:#9EF2DF;
+    --secondary-container:#5A4300;
+    --on-secondary-container:#FFDF8E;
+    --tertiary-container:#5F2318;
+    --on-tertiary-container:#FFD9D2;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1512;
+  --on-bg:#DDE5E0;
+  --surface-container:#1A2320;
+  --surface-high:#242E2A;
+  --on-surface-variant:#BFC9C4;
+  --outline:#899390;
+  --outline-variant:#3F4945;
+  --primary:#82D6C3;
+  --on-primary:#00382F;
+  --primary-container:#005046;
+  --on-primary-container:#9EF2DF;
+  --secondary-container:#5A4300;
+  --on-secondary-container:#FFDF8E;
+  --tertiary-container:#5F2318;
+  --on-tertiary-container:#FFD9D2;
+}
+
+/* ============ Base ============ */
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  min-height:100dvh;
+  display:flex;flex-direction:column;
+  background:var(--bg);
+  color:var(--on-bg);
+  font-family:"Roboto Flex",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.5;
+  transition:background-color .4s var(--smooth),color .4s var(--smooth);
+  -webkit-tap-highlight-color:transparent;
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+
+/* ============ Barra superior ============ */
+.top{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-block:20px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  font-weight:800;font-stretch:115%;font-size:1.25rem;letter-spacing:-.01em;
+  text-decoration:none;
+}
+.brand-mark{
+  width:40px;height:40px;display:grid;place-items:center;
+  background:var(--primary);color:var(--on-primary);
+  border-radius:14px 14px 14px 6px;
+  font-size:1.2rem;font-weight:900;
+}
+.brand small{font-weight:500;font-stretch:100%;color:var(--on-surface-variant);font-size:.8rem;display:block;line-height:1}
+
+/* Seletor de tema (botão segmentado) */
+.theme{
+  display:inline-flex;padding:4px;gap:4px;
+  background:var(--surface-container);
+  border-radius:999px;
+}
+.theme button{
+  appearance:none;border:0;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:999px;
+  background:transparent;color:var(--on-surface-variant);
+  font:inherit;font-size:.9rem;font-weight:600;
+  transition:background-color .25s var(--smooth),color .25s var(--smooth),border-radius .35s var(--spring),transform .35s var(--spring);
+}
+.theme button svg{width:18px;height:18px;fill:currentColor}
+.theme button:hover{background:color-mix(in srgb,var(--on-bg) 8%,transparent)}
+.theme button:active{transform:scale(.94)}
+.theme button[aria-checked="true"]{
+  background:var(--primary);color:var(--on-primary);
+}
+@media (max-width:520px){
+  .theme button span{display:none}
+  .theme button{padding:10px 14px}
+}
+
+/* ============ Hero ============ */
+main{flex:1;display:flex;align-items:center;padding-block:24px 56px}
+.hero{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+}
+.hero h1{
+  font-size:clamp(3rem,8vw,6.2rem);
+  line-height:.95;font-weight:900;font-stretch:125%;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.hero p.lead{
+  margin-top:20px;max-width:34ch;
+  font-size:1.2rem;color:var(--on-surface-variant);
+}
+
+/* Arte do hero: formas "cookie" */
+.art{
+  position:relative;aspect-ratio:1;width:min(100%,440px);justify-self:center;
+}
+.art svg.shape{position:absolute;inset:0;width:100%;height:100%}
+.art .big{fill:var(--primary-container);animation:spin 48s linear infinite}
+.art .small{
+  inset:auto;right:-4%;bottom:2%;width:42%;height:42%;
+  fill:var(--secondary-container);animation:spin 30s linear infinite reverse;
+}
+.art .tiny{
+  inset:auto;left:2%;top:6%;width:22%;height:22%;
+  fill:var(--tertiary-container);animation:spin 22s linear infinite;
+}
+.art .icon{
+  position:absolute;inset:0;display:grid;place-items:center;
+  color:var(--on-primary-container);
+}
+.art .icon svg{width:46%;height:46%;fill:currentColor}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ Botões de download ============ */
+.downloads{
+  margin-top:40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  max-width:640px;
+}
+.dl{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:space-between;gap:28px;
+  min-height:168px;padding:22px;
+  border-radius:36px 36px 36px 12px;
+  text-decoration:none;
+  transition:border-radius .5s var(--spring),transform .5s var(--spring),box-shadow .3s var(--smooth);
+}
+.dl:hover{border-radius:36px 36px 12px 36px;transform:translateY(-3px)}
+.dl:active{border-radius:56px;transform:scale(.97)}
+.dl.main{background:var(--primary);color:var(--on-primary)}
+.dl.alt{background:var(--secondary-container);color:var(--on-secondary-container)}
+.dl .row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dl .ico{
+  width:52px;height:52px;display:grid;place-items:center;flex:none;
+  border-radius:18px;background:color-mix(in srgb,currentColor 16%,transparent);
+  transition:border-radius .5s var(--spring),transform .5s var(--spring);
+}
+.dl:hover .ico{border-radius:50%;transform:rotate(-8deg) scale(1.06)}
+.dl .ico svg{width:26px;height:26px;fill:currentColor}
+.dl .tag{
+  font-size:.78rem;font-weight:700;
+  padding:5px 12px;border-radius:999px;
+  background:color-mix(in srgb,currentColor 16%,transparent);
+}
+.dl .abi{
+  display:block;
+  font-size:clamp(1.35rem,2.6vw,1.65rem);font-weight:800;font-stretch:112%;letter-spacing:-.015em;line-height:1.1;
+}
+.dl .desc{display:block;margin-top:4px;font-size:.92rem;opacity:.85}
+.ripple{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:-1;
+  background:currentColor;opacity:.22;transform:scale(0);
+  animation:rip .7s var(--smooth) forwards;
+}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+
+/* ============ Ajuda ============ */
+details{
+  margin-top:20px;max-width:640px;
+  background:var(--surface-container);
+  border-radius:28px;
+  transition:border-radius .4s var(--spring);
+}
+details[open]{border-radius:28px 28px 28px 10px}
+summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:18px 22px;border-radius:inherit;
+  font-weight:600;
+}
+summary::-webkit-details-marker{display:none}
+summary svg{width:24px;height:24px;fill:var(--on-surface-variant);transition:transform .4s var(--spring)}
+details[open] summary svg{transform:rotate(180deg)}
+details .body{padding:0 22px 20px;color:var(--on-surface-variant)}
+details .body p+p{margin-top:10px}
+details strong{color:var(--on-bg)}
+
+/* ============ Rodapé ============ */
+footer{
+  background:var(--surface-container);
+  border-radius:40px 40px 0 0;
+  padding:28px 0 calc(28px + env(safe-area-inset-bottom));
+}
+.foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;
+}
+.foot p{color:var(--on-surface-variant);font-size:.92rem}
+.foot p b{color:var(--on-bg);font-weight:700}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:999px;
+  background:var(--surface-high);
+  font-size:.9rem;font-weight:600;text-decoration:none;
+  transition:border-radius .35s var(--spring),background-color .2s,transform .35s var(--spring);
+}
+.links a:hover{background:var(--primary-container);color:var(--on-primary-container);border-radius:14px}
+.links a:active{transform:scale(.95)}
+.links svg{width:18px;height:18px;fill:currentColor}
+
+/* ============ Responsivo ============ */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .art{width:min(70%,300px);order:-1;justify-self:start}
+  main{align-items:flex-start}
+}
+@media (max-width:480px){
+  .downloads{grid-template-columns:1fr}
+  .dl{min-height:140px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#" aria-label="H.T.Plus">
+    <span class="brand-mark" aria-hidden="true">H</span>
+    <span>H.T.Plus<small>Hic-Tecks Plus</small></span>
+  </a>
+
+  <div class="theme" role="radiogroup" aria-label="Tema da página">
+    <button type="button" role="radio" data-mode="auto" aria-checked="true" title="Seguir o sistema">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18V4a8 8 0 0 1 0 16Z"/></svg><span>Auto</span>
+    </button>
+    <button type="button" role="radio" data-mode="light" aria-checked="false" title="Tema claro">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h0a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1Zm0 18a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1ZM2 11h2a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2Zm18 0h2a1 1 0 0 1 0 2h-2a1 1 0 0 1 0-2ZM5.64 4.22l1.42 1.42a1 1 0 1 1-1.42 1.42L4.22 5.64a1 1 0 0 1 1.42-1.42Zm12.72 12.72 1.42 1.42a1 1 0 0 1-1.42 1.42l-1.42-1.42a1 1 0 0 1 1.42-1.42ZM4.22 18.36l1.42-1.42a1 1 0 1 1 1.42 1.42l-1.42 1.42a1 1 0 0 1-1.42-1.42ZM16.94 5.64l1.42-1.42a1 1 0 0 1 1.42 1.42l-1.42 1.42a1 1 0 0 1-1.42-1.42Z"/></svg><span>Claro</span>
+    </button>
+    <button type="button" role="radio" data-mode="dark" aria-checked="false" title="Tema escuro">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5Z"/></svg><span>Escuro</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Baixe o MicroG RE</h1>
+      <p class="lead">Escolha a versão que combina com o processador do seu celular.</p>
+
+      <!-- ===== TROQUE OS LINKS (href) PELOS SEUS APKs ===== -->
+      <div class="downloads">
+        <a class="dl main" href="https://www.mediafire.com/view/azp8saosu0ulqgp" download>
+          <span class="row">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1ZM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1Z"/></svg>
+            </span>
+            <span class="tag">CPUs modernas</span>
+          </span>
+          <span>
+            <span class="abi">arm64-v8a</span>
+            <span class="desc">Celulares mais novos (64 bits)</span>
+          </span>
+        </a>
+
+        <a class="dl alt" href="https://www.mediafire.com/view/q0bmqcck4syt3l1" download>
+          <span class="row">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1ZM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1Z"/></svg>
+            </span>
+            <span class="tag">CPUs antigos</span>
+          </span>
+          <span>
+            <span class="abi">armeabi-v7a</span>
+            <span class="desc">Celulares mais antigos (32 bits)</span>
+          </span>
+        </a>
+      </div>
+
+      <details>
+        <summary>
+          Não sabe qual escolher?
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41Z"/></svg>
+        </summary>
+        <div class="body">
+          <p>Baixe a <strong>arm64-v8a</strong>. Ela funciona na maioria dos celulares lançados nos últimos anos.</p>
+          <p>Se o seu dispositivo for de uma CPU mais antiga, baixe a <strong>armeabi-v7a</strong>.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="art" aria-hidden="true">
+      <svg class="shape big" viewBox="-110 -110 220 220"><path data-lobes="12" data-amp="0.07" data-r="100"/></svg>
+      <svg class="shape small" viewBox="-110 -110 220 220"><path data-lobes="8" data-amp="0.09" data-r="100"/></svg>
+      <svg class="shape tiny" viewBox="-110 -110 220 220"><path data-lobes="6" data-amp="0.12" data-r="100"/></svg>
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1ZM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1Z"/></svg>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>© <span id="year">2026</span> <b>H.T.Plus</b> (Hic-Tecks Plus). Todos os direitos reservados.</p>
+    <nav class="links" aria-label="Contato">
+      <a href="https://t.me/HicTecksPlus" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.1 2.8 11.5c-.9.4-.9 1.1-.2 1.3l4.9 1.5 1.9 5.8c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8L22.9 5.3c.3-1.2-.4-1.7-1-1.2ZM9 13.6l9.6-6c.4-.3.8-.1.5.2l-7.8 7-.3 3.2L9 13.6Z"/></svg>
+        Telegram
+      </a>
+      <a href="https://github.com/Dyellopes/Hic-tecks-" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- Formas "cookie" (polígonos ondulados) ---------- */
+  document.querySelectorAll('path[data-lobes]').forEach(function(p){
+    var n = +p.dataset.lobes, a = +p.dataset.amp, r = +p.dataset.r, d = '';
+    for(var i=0;i<=240;i++){
+      var t = i/240*Math.PI*2, rr = r*(1 - a + a*Math.cos(n*t));
+      d += (i?'L':'M') + (rr*Math.cos(t)).toFixed(2) + ' ' + (rr*Math.sin(t)).toFixed(2);
+    }
+    p.setAttribute('d', d + 'Z');
+  });
+
+  /* ---------- Ano no rodapé ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Tema: auto / claro / escuro ---------- */
+  var root = document.documentElement,
+      btns = document.querySelectorAll('.theme button'),
+      meta = document.querySelector('meta[name="theme-color"]'),
+      mq   = window.matchMedia('(prefers-color-scheme: dark)'),
+      KEY  = 'htplus-theme';
+
+  function saved(){ try{ return localStorage.getItem(KEY) || 'auto'; }catch(e){ return 'auto'; } }
+  function save(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
+
+  function apply(mode){
+    if(mode === 'auto') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', mode);
+    btns.forEach(function(b){ b.setAttribute('aria-checked', String(b.dataset.mode === mode)); });
+    var dark = mode === 'dark' || (mode === 'auto' && mq.matches);
+    meta.setAttribute('content', dark ? '#0E1512' : '#F6FBF8');
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ save(b.dataset.mode); apply(b.dataset.mode); });
+  });
+  mq.addEventListener && mq.addEventListener('change', function(){ if(saved()==='auto') apply('auto'); });
+  apply(saved());
+
+  /* ---------- Ripple nos botões de download ---------- */
+  document.querySelectorAll('.dl').forEach(function(el){
+    el.addEventListener('pointerdown', function(e){
+      var r = el.getBoundingClientRect(), s = Math.max(r.width, r.height) * 2.2,
+          c = document.createElement('span');
+      c.className = 'ripple';
+      c.style.cssText = 'width:'+s+'px;height:'+s+'px;left:'+(e.clientX-r.left-s/2)+'px;top:'+(e.clientY-r.top-s/2)+'px';
+      el.appendChild(c);
+      setTimeout(function(){ c.remove(); }, 750);
+    });
+  });
+})();
+</script>
+</body>
+</html>
